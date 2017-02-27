@@ -1,2 +1,1 @@
-# Kungsbacka.CommonExtensions
-C# extensions that is used by more than one project goes here
+Kungsbacka.CommonExtensions är en plats där man kan lägga vanliga extensions till C#-objekt som man sedan kan referera i andra projekt.

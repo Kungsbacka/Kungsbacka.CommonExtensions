@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kungsbacka.CommonExtensions", "Kungsbacka.CommonExtensions\Kungsbacka.CommonExtensions.csproj", "{5BEE8AB1-AE71-471B-9CB9-7D3FBDC2BC27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kungsbacka.CommonExtensions.Tests", "Kungsbacka.CommonExtensions.Test\Kungsbacka.CommonExtensions.Tests.csproj", "{04165B39-39EA-40C3-955F-FBC8DBF44BC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BEE8AB1-AE71-471B-9CB9-7D3FBDC2BC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BEE8AB1-AE71-471B-9CB9-7D3FBDC2BC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BEE8AB1-AE71-471B-9CB9-7D3FBDC2BC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BEE8AB1-AE71-471B-9CB9-7D3FBDC2BC27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04165B39-39EA-40C3-955F-FBC8DBF44BC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04165B39-39EA-40C3-955F-FBC8DBF44BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04165B39-39EA-40C3-955F-FBC8DBF44BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04165B39-39EA-40C3-955F-FBC8DBF44BC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
