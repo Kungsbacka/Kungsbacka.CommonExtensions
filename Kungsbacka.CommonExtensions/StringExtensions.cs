@@ -88,6 +88,11 @@ namespace Kungsbacka.CommonExtensions
             return (sb.ToString().Normalize(NormalizationForm.FormC));
         }
 
+        public static string RemoveRepeating(this string str, char c)
+        {
+            return str.RemoveRepeating(new char[] { c });
+        }
+
         public static string RemoveRepeating(this string str, char[] chars)
         {
             if (string.IsNullOrEmpty(str))
