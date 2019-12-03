@@ -90,7 +90,7 @@ namespace Kungsbacka.CommonExtensions
 
         public static string RemoveRepeating(this string str, char c)
         {
-            return str.RemoveRepeating(new char[] { c });
+            return str?.RemoveRepeating(new char[] { c });
         }
 
         public static string RemoveRepeating(this string str, char[] chars)
@@ -139,6 +139,10 @@ namespace Kungsbacka.CommonExtensions
             if (string.IsNullOrEmpty(firstName))
             {
                 return "";
+            }
+            if (string.IsNullOrEmpty(indicator))
+            {
+                indicator = "10";
             }
             string[] nameArray = firstName.Replace("-", " -").Split(' ');
             string properName = string.Empty;
@@ -218,6 +222,33 @@ namespace Kungsbacka.CommonExtensions
                 return "";
             }
             return pnr.Substring(2, 6) + "-" + pnr.Substring(8, 4);
+        }
+
+        public static bool IEquals(this string left, string right)
+        {
+            if (left == null)
+            {
+                throw new NullReferenceException();
+            }
+            return left.Equals(right, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static bool IStartsWith(this string left, string right)
+        {
+            if (left == null)
+            {
+                throw new NullReferenceException();
+            }
+            return left.StartsWith(right, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static bool IEndsWith(this string left, string right)
+        {
+            if (left == null)
+            {
+                throw new NullReferenceException();
+            }
+            return left.EndsWith(right, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
