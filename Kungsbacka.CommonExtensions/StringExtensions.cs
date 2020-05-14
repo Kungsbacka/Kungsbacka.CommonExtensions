@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace Kungsbacka.CommonExtensions
@@ -76,7 +76,7 @@ namespace Kungsbacka.CommonExtensions
             }
             string normalizedString = str.Normalize(NormalizationForm.FormD);
             int len = normalizedString.Length;
-            var sb = new StringBuilder(len);
+            StringBuilder sb = new StringBuilder(len);
             for (int i = 0; i < len; i++)
             {
                 UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(normalizedString[i]);
@@ -99,7 +99,7 @@ namespace Kungsbacka.CommonExtensions
             {
                 return "";
             }
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             char previous = str[0];
             sb.Append(previous);
             for (int i = 1; i < str.Length; i++)
