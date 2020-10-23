@@ -148,7 +148,7 @@ namespace Kungsbacka.CommonExtensions
             string properName = string.Empty;
             foreach (char c in indicator)
             {
-                int i = c - '1'; // subtract by '1' instead of '0' to make a zero based index
+                int i = c - '0' - 1;
                 if (i >= 0 && i < nameArray.Length)
                 {
                     properName += nameArray[i] + " ";
