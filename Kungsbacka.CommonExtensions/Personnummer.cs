@@ -20,7 +20,8 @@ namespace Kungsbacka.CommonExtensions
             public string FormatError { get; set; }
         }
 
-        public string LongForm {
+        public string LongForm
+        {
             get
             {
                 if (_long == null)
@@ -111,7 +112,7 @@ namespace Kungsbacka.CommonExtensions
             _birthDate = info.BirthDate;
             if (info.Length == PersonnummerLength.Long && !info.ContainsDash)
             {
-                _long = original; 
+                _long = original;
             }
             else if (info.Length == PersonnummerLength.Short && info.ContainsDash)
             {
