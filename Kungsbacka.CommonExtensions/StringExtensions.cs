@@ -228,7 +228,7 @@ namespace Kungsbacka.CommonExtensions
         {
             if (left == null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException(nameof(left));
             }
             return left.Equals(right, StringComparison.OrdinalIgnoreCase);
         }
@@ -237,7 +237,7 @@ namespace Kungsbacka.CommonExtensions
         {
             if (left == null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException(nameof(left));
             }
             return left.StartsWith(right, StringComparison.OrdinalIgnoreCase);
         }
@@ -246,9 +246,18 @@ namespace Kungsbacka.CommonExtensions
         {
             if (left == null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException(nameof(left));
             }
             return left.EndsWith(right, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static int IIndexOf(this string str, string sub)
+        {
+            if (str == null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+            return str.IndexOf(sub, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
