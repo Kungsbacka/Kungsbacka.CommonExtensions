@@ -29,7 +29,7 @@ namespace Kungsbacka.CommonExtensions.Tests
     [TestClass]
     public class TestPersonnummer
     {
-        Dictionary<string, TestResult> ValidTestCases = new Dictionary<string, TestResult>()
+        readonly IReadOnlyDictionary<string, TestResult> ValidTestCases = new Dictionary<string, TestResult>()
         {
             { "194912232594",   new TestResult() {Original = "194912232594" , LongForm = "194912232594", ShortForm = "491223-2594", IsTemporary = false, BirthDate = DateTime.ParseExact("19491223", "yyyyMMdd", null) } },
             { "19491223TF94",   new TestResult() {Original = "19491223TF94" , LongForm = "19491223TF94", ShortForm = "491223-TF94", IsTemporary = true , BirthDate = DateTime.ParseExact("19491223", "yyyyMMdd", null) } },
@@ -39,17 +39,7 @@ namespace Kungsbacka.CommonExtensions.Tests
             { "491223TF94",     new TestResult() {Original = "491223TF94"   , LongForm = "19491223TF94", ShortForm = "491223-TF94", IsTemporary = true , BirthDate = DateTime.ParseExact("19491223", "yyyyMMdd", null) } },
             { "491223-2594",    new TestResult() {Original = "491223-2594"  , LongForm = "194912232594", ShortForm = "491223-2594", IsTemporary = false, BirthDate = DateTime.ParseExact("19491223", "yyyyMMdd", null) } },
             { "491223-TF94",    new TestResult() {Original = "491223-TF94"  , LongForm = "19491223TF94", ShortForm = "491223-TF94", IsTemporary = true , BirthDate = DateTime.ParseExact("19491223", "yyyyMMdd", null) } },
-        };
-        string[] InvalidTestCases = new string[]
-        {
-            null,
-            "",
-            "X12233-TF55",
-            "111112233-TF55",
-            "112233T455",
-            "          ",
-            "112233T-F55",
-            "12345678901"
+            { "194912832591",   new TestResult() {Original = "194912832591" , LongForm = "194912832591", ShortForm = "491283-2591", IsTemporary = false, BirthDate = DateTime.ParseExact("19491223", "yyyyMMdd", null) } },
         };
 
         [TestMethod]

@@ -139,8 +139,23 @@ namespace Kungsbacka.CommonExtensions
                 input = century + input;
 
             }
+
+            if (!info.IsTemporary && !TestAgainsCheckDigit(input, info.ContainsDash))
+            {
+                info.IsValid = false;
+                info.FormatError = "Validating check digit failed";
+            }
+
+            // Samordningsnummer adds 60 to birth day
+            int day = int.Parse(input.Substring(6, 2));
+            if (day > 60)
+            {
+                day -= 60;
+            }
+
+            string birthDatestring = string.Format("{0}{1,2:D2}", input.Substring(0, 6), day);
             // Only check that birth date is a valid date. Not if the date is in the future or if it's very old.
-            if (DateTime.TryParseExact(input.Substring(0, 8), "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime birthDate))
+            if (DateTime.TryParseExact(birthDatestring, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime birthDate))
             {
                 info.BirthDate = birthDate;
             }
@@ -149,11 +164,6 @@ namespace Kungsbacka.CommonExtensions
                 info.IsValid = false;
                 info.FormatError = "Birth date is not a valid date";
                 return info;
-            }
-            if (!info.IsTemporary && !TestAgainsCheckDigit(input, info.ContainsDash))
-            {
-                info.IsValid = false;
-                info.FormatError = "Validating check digit failed";
             }
             return info;
         }
