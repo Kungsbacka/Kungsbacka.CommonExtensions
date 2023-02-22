@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.ExceptionServices;
 
 namespace Kungsbacka.CommonExtensions
 {
@@ -140,7 +141,7 @@ namespace Kungsbacka.CommonExtensions
 
             }
 
-            if (!info.IsTemporary && !TestAgainsCheckDigit(input, info.ContainsDash))
+            if (!info.IsTemporary && !TestAgainstCheckDigit(input, info.ContainsDash))
             {
                 info.IsValid = false;
                 info.FormatError = "Validating check digit failed";
@@ -153,9 +154,9 @@ namespace Kungsbacka.CommonExtensions
                 day -= 60;
             }
 
-            string birthDatestring = string.Format("{0}{1,2:D2}", input.Substring(0, 6), day);
+            string birthDateString = string.Format("{0}{1,2:D2}", input.Substring(0, 6), day);
             // Only check that birth date is a valid date. Not if the date is in the future or if it's very old.
-            if (DateTime.TryParseExact(birthDatestring, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime birthDate))
+            if (DateTime.TryParseExact(birthDateString, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime birthDate))
             {
                 info.BirthDate = birthDate;
             }
@@ -220,8 +221,7 @@ namespace Kungsbacka.CommonExtensions
             return info;
         }
 
-
-        private static bool TestAgainsCheckDigit(string input, bool containsDash)
+        private static bool TestAgainstCheckDigit(string input, bool containsDash)
         {
             int len = input.Length;
             if (containsDash)
