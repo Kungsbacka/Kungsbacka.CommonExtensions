@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.Collections.Generic;
 
@@ -26,7 +26,6 @@ namespace Kungsbacka.CommonExtensions.Tests
         }
     }
 
-    [TestClass]
     public class TestPersonnummer
     {
         readonly IReadOnlyDictionary<string, TestResult> ValidTestCases = new Dictionary<string, TestResult>()
@@ -42,7 +41,7 @@ namespace Kungsbacka.CommonExtensions.Tests
             { "194912832591",   new TestResult() {Original = "194912832591" , LongForm = "194912832591", ShortForm = "491283-2591", IsTemporary = false, BirthDate = DateTime.ParseExact("19491223", "yyyyMMdd", null) } },
         };
 
-        [TestMethod]
+        [Fact]
         public void TestValid()
         {
             foreach (string key in ValidTestCases.Keys)
@@ -56,71 +55,63 @@ namespace Kungsbacka.CommonExtensions.Tests
                     IsTemporary = personnummer.IsTemporary,
                     BirthDate = personnummer.BirthDate
                 };
-                Assert.IsTrue(ValidTestCases[key].Equals(actual), key);
+                Assert.True(ValidTestCases[key].Equals(actual), key);
             }
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void TestNull()
         {
-            new Personnummer(null);
+            Assert.Throws<ArgumentNullException>(() => new Personnummer(null));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [Fact]
         public void TestEmpty()
         {
-            new Personnummer("          ");
+            Assert.Throws<FormatException>(() => new Personnummer("          "));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [Fact]
         public void TestBad1()
         {
-            new Personnummer("123456789");
+            Assert.Throws<FormatException>(() => new Personnummer("123456789"));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [Fact]
         public void TestBad2()
         {
-            new Personnummer("12345-6789");
+            Assert.Throws<FormatException>(() => new Personnummer("12345-6789"));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [Fact]
         public void TestBad3()
         {
-            new Personnummer("abcdefghijkl");
+            Assert.Throws<FormatException>(() => new Personnummer("abcdefghijkl"));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [Fact]
         public void TestBad4()
         {
-            new Personnummer("491223tf94");
+            Assert.Throws<FormatException>(() => new Personnummer("491223tf94"));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [Fact]
         public void TestBadCheckDigit()
         {
-            new Personnummer("194912232584");
+            Assert.Throws<FormatException>(() => new Personnummer("194912232584"));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [Fact]
         public void TestBadBirthDate()
         {
-            new Personnummer("8013015212");
+            Assert.Throws<FormatException>(() => new Personnummer("8013015212"));
         }
 
-        [TestMethod]
+        [Fact]
         public void TestFutureBirthDate()
         {
             Personnummer personnummer = new Personnummer("801301015218");
-            Assert.AreEqual(personnummer.BirthDate, DateTime.Parse("8013-01-1"));
+            Assert.Equal(DateTime.Parse("8013-01-1"), personnummer.BirthDate);
         }
     }
 }
